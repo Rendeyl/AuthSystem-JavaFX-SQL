@@ -30,12 +30,12 @@ public class MainController {
 
     }
 
-    @FXML
-    private Label myText;
-
-    public void Test(){
-        String temp = DB.deyl(3);
-        myText.setText(temp);
+    public void Signup(ActionEvent e) throws IOException{
+        root = FXMLLoader.load(getClass().getResource("/Scenes/CreateAcc.fxml"));
+        scene = new Scene(root);
+        stage = (Stage)((Node)e.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
 
 }

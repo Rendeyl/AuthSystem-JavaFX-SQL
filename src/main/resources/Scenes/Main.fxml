@@ -17,7 +17,7 @@
             <Font name="Cooper Black" size="12.0" />
          </font>
       </Button>
-      <Button layoutX="52.0" layoutY="271.0" mnemonicParsing="false" onAction="#Test" prefHeight="45.0" prefWidth="103.0" style="-fx-background-color: #ccdbba;" text="Create Account" wrapText="true">
+      <Button layoutX="52.0" layoutY="271.0" mnemonicParsing="false" onAction="#Signup" prefHeight="45.0" prefWidth="103.0" style="-fx-background-color: #ccdbba;" text="Create Account" wrapText="true">
          <font>
             <Font name="Cooper Black" size="10.0" />
          </font>
