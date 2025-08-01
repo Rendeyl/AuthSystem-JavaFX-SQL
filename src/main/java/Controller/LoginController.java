@@ -28,6 +28,14 @@ public class LoginController {
         stage.show();
     }
 
+    public boolean charLimit(String input){
+
+        int len = input.length();
+        if(len < 4 || len > 16) return false;
+        else return true;
+
+    }
+
     @FXML
     private TextField userInput;
 
@@ -39,6 +47,18 @@ public class LoginController {
     public void checkForUser(ActionEvent e){
         //search for user
         String username = userInput.getText();
+        System.out.println("LOL: " + charLimit(username));
+
+        if(!charLimit(username)){
+            System.out.println("CHAR MAX MIN");
+            Alert invalid = new Alert(Alert.AlertType.WARNING);
+            invalid.setTitle("Character Limit");
+            invalid.setHeaderText(null);
+            invalid.setContentText("Minimal of 4 Characters and Max of 16");
+            invalid.showAndWait();
+            return;
+        }
+
         if (DB.checkUser(username)){
             matchPassword();
             System.out.println("cool");

@@ -19,6 +19,14 @@ import Database.DB;
 
 public class SignUp {
 
+    public boolean charLimit(String input){
+
+        int len = input.length();
+        if(len < 4 || len > 16) return false;
+        else return true;
+
+    }
+
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -37,6 +45,17 @@ public class SignUp {
     public void signup(ActionEvent e){
         //check for usernames that already exist
         String username = userInput.getText();
+        int len = username.length();
+
+        if(!charLimit(username)){
+            Alert invalid = new Alert(Alert.AlertType.WARNING);
+            invalid.setTitle("Character Limit");
+            invalid.setHeaderText(null);
+            invalid.setContentText("Minimal of 4 Characters and Max of 16");
+            invalid.showAndWait();
+            return;
+        }
+
         if(DB.checkIfUserAlreadyExist(username)){
             Alert invalid = new Alert(Alert.AlertType.WARNING);
             invalid.setTitle("Username Error");
@@ -58,6 +77,16 @@ public class SignUp {
         String username = userInput.getText();
         String password = passwordInput.getText();
         String confirm_Password = confirmPassword.getText();
+
+        if(!charLimit(password)){
+            Alert invalid = new Alert(Alert.AlertType.WARNING);
+            invalid.setTitle("Character Limit");
+            invalid.setHeaderText(null);
+            invalid.setContentText("Minimal of 4 Characters and Max of 16");
+            invalid.showAndWait();
+            return;
+        }
+
         if(password.equals(confirm_Password)){
             DB.addAccount(username, password);
         }else {
