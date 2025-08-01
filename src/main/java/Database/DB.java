@@ -27,7 +27,7 @@ public class DB {
 
         private static String url = "jdbc:mysql://localhost:3306/myDB";
         private static String user = "root";
-        private static String password = "Soloflow";
+        private static String password = "Password";
 
         public static Connection createConnection() throws SQLException{
             try {
