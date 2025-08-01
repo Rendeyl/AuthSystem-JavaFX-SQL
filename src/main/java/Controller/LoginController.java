@@ -47,10 +47,8 @@ public class LoginController {
     public void checkForUser(ActionEvent e){
         //search for user
         String username = userInput.getText();
-        System.out.println("LOL: " + charLimit(username));
 
         if(!charLimit(username)){
-            System.out.println("CHAR MAX MIN");
             Alert invalid = new Alert(Alert.AlertType.WARNING);
             invalid.setTitle("Character Limit");
             invalid.setHeaderText(null);
