@@ -86,6 +86,7 @@ public class SignUp {
             invalid.showAndWait();
             return;
         }
+        //a
 
         if(password.equals(confirm_Password)){
             DB.addAccount(username, password);
