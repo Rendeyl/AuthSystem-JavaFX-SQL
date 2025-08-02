@@ -58,30 +58,6 @@ public class DB {
             }
         }
 
-        public static String deyl(int finding){
-            String req = "SELECT * FROM players";
-
-            try{
-                Connection conn = createConnection();
-                Statement statement = conn.createStatement();
-                ResultSet data = statement.executeQuery(req);
-
-                while (data.next()){
-                    int current_num = data.getInt("jersey_number");
-                    String name = data.getString("first_name");
-
-                    if(current_num == finding){
-                        return name;
-                    }
-                }
-
-            }catch (SQLException e){
-                System.out.println("SQL error");
-                e.printStackTrace();
-            }
-            return null;
-        }
-
         public static boolean checkUser(String username){
 
             String req = "SELECT username FROM users WHERE BINARY username = ?";
