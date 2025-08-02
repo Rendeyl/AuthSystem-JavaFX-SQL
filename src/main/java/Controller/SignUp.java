@@ -13,6 +13,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.controlsfx.control.tableview2.filter.filtereditor.SouthFilter;
 
+import Alerts.AlertClass;
+
 import java.io.IOException;
 
 import Database.DB;
@@ -48,20 +50,14 @@ public class SignUp {
         int len = username.length();
 
         if(!charLimit(username)){
-            Alert invalid = new Alert(Alert.AlertType.WARNING);
-            invalid.setTitle("Character Limit");
-            invalid.setHeaderText(null);
-            invalid.setContentText("Minimal of 4 Characters and Max of 16");
-            invalid.showAndWait();
+            AlertClass alert = new AlertClass();
+            alert.AlertTemp(Alert.AlertType.WARNING, "Charcter Limit", null, "Minimal of 4 Characters and Max of 16");
             return;
         }
 
         if(DB.checkIfUserAlreadyExist(username)){
-            Alert invalid = new Alert(Alert.AlertType.WARNING);
-            invalid.setTitle("Username Error");
-            invalid.setHeaderText(null);
-            invalid.setContentText("Username Already Exist");
-            invalid.showAndWait();
+            AlertClass alert = new AlertClass();
+            alert.AlertTemp(Alert.AlertType.WARNING, "Username Error", null, "Username Already Exist");
         }else {
             passwordConfirmation();
         }
@@ -79,23 +75,18 @@ public class SignUp {
         String confirm_Password = confirmPassword.getText();
 
         if(!charLimit(password)){
-            Alert invalid = new Alert(Alert.AlertType.WARNING);
-            invalid.setTitle("Character Limit");
-            invalid.setHeaderText(null);
-            invalid.setContentText("Minimal of 4 Characters and Max of 16");
-            invalid.showAndWait();
+            AlertClass alert = new AlertClass();
+            alert.AlertTemp(Alert.AlertType.WARNING, "Charcter Limit", null, "Minimal of 4 Characters and Max of 16");
             return;
         }
-        //a
 
         if(password.equals(confirm_Password)){
             DB.addAccount(username, password);
+            AlertClass alert = new AlertClass();
+            alert.AlertTemp(Alert.AlertType.WARNING, "Account Created", null, "Account Succesfully Created");
         }else {
-            Alert invalid = new Alert(Alert.AlertType.WARNING);
-            invalid.setTitle("Password Error");
-            invalid.setHeaderText(null);
-            invalid.setContentText("Password Does Not Match");
-            invalid.showAndWait();
+            AlertClass alert = new AlertClass();
+            alert.AlertTemp(Alert.AlertType.WARNING, "Password Error", null, "Password Does Not Match");
         }
     }
 

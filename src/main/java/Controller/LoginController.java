@@ -12,6 +12,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import Alerts.AlertClass;
+
 import java.io.IOException;
 
 public class LoginController {
@@ -49,24 +51,16 @@ public class LoginController {
         String username = userInput.getText();
 
         if(!charLimit(username)){
-            Alert invalid = new Alert(Alert.AlertType.WARNING);
-            invalid.setTitle("Character Limit");
-            invalid.setHeaderText(null);
-            invalid.setContentText("Minimal of 4 Characters and Max of 16");
-            invalid.showAndWait();
+            AlertClass alert = new AlertClass();
+            alert.AlertTemp(Alert.AlertType.WARNING, "Character Limit", null, "Minimal of 4 Characters and Max of 16");
             return;
         }
-        //a
 
         if (DB.checkUser(username)){
             matchPassword();
-            System.out.println("cool");
         }else {
-            Alert invalid = new Alert(Alert.AlertType.WARNING);
-            invalid.setTitle("Error logging in");
-            invalid.setHeaderText(null);
-            invalid.setContentText("Invalid Username or Password");
-            invalid.showAndWait();
+            AlertClass alert = new AlertClass();
+            alert.AlertTemp(Alert.AlertType.WARNING, "Error Logging in", null, "Invalid Username or Password");
         }
 
     }
@@ -75,17 +69,11 @@ public class LoginController {
         String username = userInput.getText();
         String pass = passwordInput.getText();
         if(DB.matchPassword(username, pass)){
-            Alert valid = new Alert(Alert.AlertType.WARNING);
-            valid.setTitle("Logged in");
-            valid.setHeaderText(null);
-            valid.setContentText("Logged in");
-            valid.showAndWait();
+            AlertClass alert = new AlertClass();
+            alert.AlertTemp(Alert.AlertType.WARNING, "Logged in", null, "Logged in");
         }else {
-            Alert invalid = new Alert(Alert.AlertType.WARNING);
-            invalid.setTitle("Error logging in");
-            invalid.setHeaderText(null);
-            invalid.setContentText("Invalid Username or Password");
-            invalid.showAndWait();
+            AlertClass alert = new AlertClass();
+            alert.AlertTemp(Alert.AlertType.WARNING, "Error Logging in", null, "Invalid Username or Password");
         }
     }
 
