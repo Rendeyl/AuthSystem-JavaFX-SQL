@@ -39,25 +39,6 @@ public class DB {
             return DriverManager.getConnection(url, user, password);
         }
 
-        public static void printAll(){
-            String req = "SELECT * FROM players";
-
-            try {
-                Connection conn = createConnection();
-                Statement statement = conn.createStatement();
-                ResultSet data = statement.executeQuery(req);
-
-                while(data.next()){
-                    String firstName = data.getString("first_name");
-
-                    System.out.println(firstName);
-                }
-            }catch (SQLException e){
-                System.out.println("SQL error");
-                e.printStackTrace();
-            }
-        }
-
         public static boolean checkUser(String username){
 
             String req = "SELECT username FROM users WHERE BINARY username = ?";
@@ -132,7 +113,7 @@ public class DB {
                 statement.setString(2, hashedPassword);
                 statement.executeUpdate();
             }catch (SQLException e){
-                System.out.println("SQL erroraaaa");
+                System.out.println("SQL error");
                 e.printStackTrace();
             }
         }
